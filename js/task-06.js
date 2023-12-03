@@ -12,23 +12,24 @@ const createBoxes = (amount) => {
     let list = document.querySelector("#boxes");
     let curWidth = 30;
     let curHeigth = 30;
+    let arrDiv = [];
     Array.from({ length: amount }).map(() => {
       let divNew = document.createElement('div');
       divNew.style.width = `${curWidth}px`;
       divNew.style.height = `${curHeigth}px`;
       divNew.style.backgroundColor = getRandomHexColor();
       divNew.style.marginTop = '14px';
-      list.append(divNew);
       curWidth += 10;
       curHeigth += 10;
+      arrDiv.push(divNew);
     });
+    list.append(...arrDiv);
   }
   divEdit.value = "";
-};
+}
 
 let createBtn = document.querySelector('[data-create]');
 createBtn.addEventListener('click', createBoxes);
-  
 
 const destroyBoxes = () => {
   let newList = document.querySelector('#boxes');
